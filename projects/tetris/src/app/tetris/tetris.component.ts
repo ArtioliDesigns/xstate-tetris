@@ -91,6 +91,6 @@ export class TetrisComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     playAgain() {
-        this.tetrisService.startGame();
+        this.tetrisService.playAgain();
     }
 }

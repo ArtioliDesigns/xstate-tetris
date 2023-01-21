@@ -80,6 +80,10 @@ export class StateService {
         this.interpreter.send('END');
     }
 
+    playAgain() {
+        this.interpreter.send('PLAYAGAIN');
+    }
+
     rotateRight() {
         this.interpreter.send('ROTATE_RIGHT');
     }

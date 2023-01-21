@@ -36,10 +36,19 @@ export class TetrisService {
         this.context = context;
     }
     startGame() {
+        this._initializeGame();
+        this.stateService.start();
+    }
+
+    playAgain() {
+        this._initializeGame();
+        this.stateService.playAgain();
+    }
+
+    private _initializeGame() {
         this._initializePlayfield();
         this.currentTetromino = this._getNextTetromino();
         this.rAF = requestAnimationFrame(() => this._loop());
-        this.stateService.start();
     }
 
     moveLeft() {
