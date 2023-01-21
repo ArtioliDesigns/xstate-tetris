@@ -68,3 +68,11 @@ prompt: blocks in groups of 4 looking like tetrominoes used as a logo with vibra
 
 upscale: 
 <https://discord.com/channels/662267976984297473/990816789246124032/1066390626347790377>
+
+## Tetris Gameplay
+
+Took a lot from this gist:
+
+<https://gist.github.com/straker/3c98304f8a6a9174efd8292800891ea1>
+
+downloaded into `/Docs/tetris.gist.html`

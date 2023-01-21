@@ -1,7 +1,7 @@
-import { TetrominoName } from '../models';
+import { TetrominoName, TetrominosMatrix } from '../models';
 
-export const tetrominos: {
-    [index in TetrominoName]: number[][];
+export const tetrominosMatrices: {
+    [index in TetrominoName]: TetrominosMatrix;
 } = {
     I: [
         [0, 0, 0, 0],
