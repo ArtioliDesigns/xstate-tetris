@@ -1,3 +1,5 @@
-<div class="simple-box">
-    <div class="simple-button flex-center" *ngIf='this.state.value === "homescreen"'><button class="button" (click)="buttonClicked()">START</button></div>
+<div class="game-container">
+    <canvas #gameCanvas width="320" height="640"></canvas>
+    <div class="button-container flex-center" *ngIf='this.state.value === "homescreen"'><button class="pointer" (click)="start()">START</button></div>
+    <div class="button-container flex-center" *ngIf='this.state.value === "gameover"'><button class="pointer" (click)="playAgain()">PLAY AGAIN</button></div>
 </div>

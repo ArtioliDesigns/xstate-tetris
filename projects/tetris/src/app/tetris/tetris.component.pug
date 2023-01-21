@@ -1,8 +1,15 @@
-.simple-box
-
-    .simple-button.flex-center(
+.game-container
+    canvas(#gameCanvas, width="320", height="640")
+    .button-container.flex-center(
         *ngIf='this.state.value === "homescreen"'
     )
-        button.button(
-            (click)='buttonClicked()'
+        button.pointer(
+            (click)='start()'
         ) START
+
+    .button-container.flex-center(
+        *ngIf='this.state.value === "gameover"'
+    )
+        button.pointer(
+            (click)='playAgain()'
+        ) PLAY AGAIN

@@ -29,6 +29,6 @@ export interface Tetromino {
     col: number;
 }
 
-export type PlayfieldMatrix = number[][];
+export type PlayfieldMatrix = (number | TetrominoName)[][];
 
 export type TetrominosMatrix = number[][];

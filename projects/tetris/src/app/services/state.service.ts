@@ -76,6 +76,10 @@ export class StateService {
         this.interpreter.send('START');
     }
 
+    end() {
+        this.interpreter.send('END');
+    }
+
     rotateRight() {
         this.interpreter.send('ROTATE_RIGHT');
     }

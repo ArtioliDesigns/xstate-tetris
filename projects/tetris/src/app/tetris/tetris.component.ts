@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    OnInit,
+    ViewChild,
+    ViewEncapsulation,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StateFrom } from 'xstate';
 
@@ -14,14 +22,17 @@ import { HotKeysService, StateService, TetrisService } from '../services';
     templateUrl: './tetris.component.html',
     providers: [StateService, TetrisService, HotKeysService],
 })
-export class TetrisComponent implements OnInit, OnDestroy {
+export class TetrisComponent implements OnInit, OnDestroy, AfterViewInit {
+    @ViewChild('gameCanvas') gameCanvas!: ElementRef<HTMLCanvasElement>;
     subscription: Subscription = new Subscription();
     state!: StateFrom<typeof this.stateService.tetrisMachine>;
+
     constructor(
         private stateService: StateService,
         private tetrisService: TetrisService,
         private hotKeysService: HotKeysService
     ) {}
+
     ngOnInit() {
         this.subscription.add(
             this.stateService.state$.subscribe((state) => {
@@ -31,21 +42,55 @@ export class TetrisComponent implements OnInit, OnDestroy {
         );
 
         this.subscription.add(
+            this.hotKeysService.addShortcut$({ keys: 'f' }).subscribe(() => {
+                this.tetrisService.rotateRight();
+            })
+        );
+
+        this.subscription.add(
+            this.hotKeysService.addShortcut$({ keys: 'd' }).subscribe(() => {
+                this.tetrisService.rotateLeft();
+            })
+        );
+
+        this.subscription.add(
             this.hotKeysService.addShortcut$({ keys: 'l' }).subscribe(() => {
-                this.stateService.rotateRight();
+                this.tetrisService.moveRight();
             })
         );
 
         this.subscription.add(
             this.hotKeysService.addShortcut$({ keys: 'j' }).subscribe(() => {
-                this.stateService.rotateLeft();
+                this.tetrisService.moveLeft();
+            })
+        );
+
+        this.subscription.add(
+            this.hotKeysService.addShortcut$({ keys: 'k' }).subscribe(() => {
+                this.tetrisService.drop();
+            })
+        );
+
+        this.subscription.add(
+            this.hotKeysService.addShortcut$({ keys: 'i' }).subscribe(() => {
+                this.tetrisService.rotateRight();
             })
         );
     }
+
+    ngAfterViewInit() {
+        this.tetrisService.afterViewInit(this.gameCanvas);
+    }
+
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
-    buttonClicked() {
-        this.stateService.start();
+
+    start() {
+        this.tetrisService.startGame();
+    }
+
+    playAgain() {
+        this.tetrisService.startGame();
     }
 }
