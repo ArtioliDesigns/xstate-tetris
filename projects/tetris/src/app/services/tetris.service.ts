@@ -1,4 +1,5 @@
 import { ElementRef, Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { tetrominosMatrices } from '../data';
 import {
@@ -24,7 +25,13 @@ export class TetrisService {
     rAF: number | null = null; // keep track of the animation frame so we can cancel it
     gameOver = false;
 
+    _score$ = new BehaviorSubject<number>(0);
+
     constructor(private stateService: StateService) {}
+
+    get score$(): Observable<number> {
+        return this._score$.asObservable();
+    }
 
     afterViewInit(gameCanvas: ElementRef<HTMLCanvasElement>) {
         this.gameCanvas = gameCanvas.nativeElement;
@@ -47,6 +54,7 @@ export class TetrisService {
 
     private _initializeGame() {
         this._initializePlayfield();
+        this._score$.next(0);
         this.currentTetromino = this._getNextTetromino();
         this.rAF = requestAnimationFrame(() => this._loop());
     }
@@ -127,6 +135,8 @@ export class TetrisService {
         for (let row = this.playfield.length - 1; row >= 0; ) {
             if (this.playfield[row].every((cell) => !!cell)) {
                 // drop every row above this one
+                this._score$.next(this._score$.value + 1);
+
                 for (let r = row; r >= 0; r--) {
                     for (let c = 0; c < this.playfield[r].length; c++) {
                         this.playfield[r][c] = this.playfield[r - 1][c];

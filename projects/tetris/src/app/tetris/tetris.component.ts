@@ -26,6 +26,7 @@ export class TetrisComponent implements OnInit, OnDestroy, AfterViewInit {
     @ViewChild('gameCanvas') gameCanvas!: ElementRef<HTMLCanvasElement>;
     subscription: Subscription = new Subscription();
     state!: StateFrom<typeof this.stateService.tetrisMachine>;
+    score!: number;
 
     constructor(
         private stateService: StateService,
@@ -76,6 +77,8 @@ export class TetrisComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.tetrisService.rotateRight();
             })
         );
+
+        this.subscription.add(this.tetrisService.score$.subscribe((score) => (this.score = score)));
     }
 
     ngAfterViewInit() {
