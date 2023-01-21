@@ -7,13 +7,13 @@ The base element comes out to around 41k! (Before images, service, forms, etc)
 Clients will just need to include in their `<head>`
 
 ```html
-<script src='https://domain/js/some-widget.js'></script>
+<script src='https://xstate-tetris.pages.dev/dist/xstate-tetris.js'></script>
 ```
 
 and then can use:
 
 ```html
-<some-widget input='12345'><some-widget>
+<xstate-tetris></xstate-tetris>
 ```
 
 ## Quick Start
