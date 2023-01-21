@@ -22,6 +22,33 @@ export class StateService {
                 on: {
                     END: 'gameover',
                 },
+                initial: '0',
+                states: {
+                    0: {
+                        on: {
+                            ROTATE_RIGHT: { target: '90' },
+                            ROTATE_LEFT: { target: '270' },
+                        },
+                    },
+                    90: {
+                        on: {
+                            ROTATE_RIGHT: { target: '180' },
+                            ROTATE_LEFT: { target: '0' },
+                        },
+                    },
+                    180: {
+                        on: {
+                            ROTATE_RIGHT: { target: '270' },
+                            ROTATE_LEFT: { target: '90' },
+                        },
+                    },
+                    270: {
+                        on: {
+                            ROTATE_RIGHT: { target: '0' },
+                            ROTATE_LEFT: { target: '180' },
+                        },
+                    },
+                },
             },
             gameover: {
                 on: {
@@ -36,7 +63,7 @@ export class StateService {
         },
     });
 
-    private interpreter = interpret(this.tetrisMachine).start();
+    private interpreter = interpret(this.tetrisMachine, { devTools: true }).start();
     private _state$ = from(this.interpreter);
 
     constructor() {}
@@ -47,5 +74,13 @@ export class StateService {
 
     start() {
         this.interpreter.send('START');
+    }
+
+    rotateRight() {
+        this.interpreter.send('ROTATE_RIGHT');
+    }
+
+    rotateLeft() {
+        this.interpreter.send('ROTATE_LEFT');
     }
 }
