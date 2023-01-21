@@ -1,7 +1,17 @@
-.simple-box
-    .flex-center
-        | XState Checkout Widget
-    .simple-button.flex-center
-        button.button(
-            (click)='buttonClicked()'
-        ) click me
+.flex-right
+    .score {{score}}
+.game-container
+    canvas(#gameCanvas, width="320", height="640")
+    .button-container.flex-center(
+        *ngIf='this.state.value === "homescreen"'
+    )
+        button.pointer(
+            (click)='start()'
+        ) START
+
+    .button-container.flex-center(
+        *ngIf='this.state.value === "gameover"'
+    )
+        button.pointer(
+            (click)='playAgain()'
+        ) PLAY AGAIN

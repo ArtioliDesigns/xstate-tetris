@@ -1,6 +1,33 @@
+.game-container {
+    position: relative;
+    margin: 20px;
+    &::before {
+        content: "";
+        z-index: -1;
+        position: absolute;      
+        top: 0; left: 0;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        background-color: lightsteelblue;
+        opacity: .9;
+    }
+}
+
+.score {
+    color: white;
+}
+
+.button-container {
+    position: absolute;
+    top: 24px;
+    width: 100%;
+}
+
 .simple-box {
     padding: 20px;
-    width: 200px;
+    width: 320px;
+    height: 640px;
     background-color: #dfdcb9;
 }
 
@@ -10,6 +37,16 @@
     justify-content: center !important;
 }
 
+.flex-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+}
+
 .simple-button {
     margin: 10px;
+}
+
+.pointer {
+    cursor: pointer;
 }
