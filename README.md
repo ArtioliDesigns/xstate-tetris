@@ -55,3 +55,16 @@ Then:
 - Delete unnecesary files. (See checkout)
 - Make any updates to angular.json
 - Add in scripts for new project in package.json
+
+## Midjourney
+
+prompt: orlando florida tetris blocks logo without text vibrant colors
+
+<https://discord.com/channels/662267976984297473/981697533858414652/1066387740813447259>
+
+prompt: blocks in groups of 4 looking like tetrominoes used as a logo with vibrant colors in the theme of orlando florida
+
+<https://discord.com/channels/662267976984297473/990816789246124032/1066389773989711913>
+
+upscale: 
+<https://discord.com/channels/662267976984297473/990816789246124032/1066390626347790377>

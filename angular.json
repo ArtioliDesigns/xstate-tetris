@@ -27,7 +27,7 @@
                             "projects/tetris/src/favicon.ico",
                             "projects/tetris/src/assets"
                         ],
-                        "styles": [],
+                        "styles": ["projects/tetris/src/styles/styles.scss"],
                         "scripts": []
                     },
                     "configurations": {
