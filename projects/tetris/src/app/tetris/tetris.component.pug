@@ -1,7 +1,8 @@
 .simple-box
-    //- .flex-center
-    //-     | Click to get started!
-    .simple-button.flex-center
+
+    .simple-button.flex-center(
+        *ngIf='this.state.value === "homescreen"'
+    )
         button.button(
             (click)='buttonClicked()'
         ) START

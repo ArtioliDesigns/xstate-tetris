@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { assign, createMachine, interpret } from 'xstate';
 
-interface Context {
-    score: number;
-}
+import { TetrisGameContext } from '../models';
 
 @Injectable()
 export class StateService {
-    private tetrisMachine = createMachine<Context>({
+    public tetrisMachine = createMachine<TetrisGameContext>({
         id: 'tetris',
         initial: 'homescreen',
         context: {
@@ -43,7 +41,7 @@ export class StateService {
 
     constructor() {}
 
-    get state$(): Observable<unknown> {
+    get state$() {
         return this._state$;
     }
 
