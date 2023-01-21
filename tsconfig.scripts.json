@@ -1,0 +1,54 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "scripts",
+        "declaration": false,
+        "downlevelIteration": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "lib": ["es2022", "dom"],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "dist",
+        "paths": {
+            "@app/*": [
+                "../src/app/*"
+            ],
+            "@data/*": [
+                "../src/data/*"
+            ],
+            "@modules/*": [
+                "../src/modules/*"
+            ],
+            "@testing/*": [
+                "../src/testing/*"
+            ],
+            "@mocks/*": [
+                "../src/testing/mocks/__mocks__/*"
+            ]
+        },
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2022",
+        "typeRoots": ["node_modules/@types", "src/typings"]
+    },
+    "include": [
+        "scripts/**/*",
+        "src/typings/**/*.ts",
+        "src/**/*.model.ts",
+    ],
+    "exclude": [
+        "node_modules/**/*",
+        "dist/**/*",
+        "src/testing/**/*",
+        "src/**/*.test.ts"
+    ],
+    "ts-node": {
+        "files": true
+    }
+}
